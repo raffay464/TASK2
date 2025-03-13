@@ -1,0 +1,5 @@
+echo "node_modules/" >> .gitignore
+echo "backend/node_modules/" >> .gitignore
+echo "frontend/node_modules/" >> .gitignore
+echo "database/*.log" >> .gitignore
+echo ".env" >> .gitignore
