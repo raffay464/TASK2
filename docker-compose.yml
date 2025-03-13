@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  database:
+    build: ./database
+    restart: always
+    ports:
+      - "5432:5432"
+
+  backend:
+    build: ./backend
+    restart: always
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+    environment:
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_NAME=usersdb
+      - JWT_SECRET=your_secret_key
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
